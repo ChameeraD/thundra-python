@@ -3,6 +3,11 @@ app = Flask(__name__)
 
 from pathlib import Path
 from dotenv import load_dotenv
+from users import user_api
+from posts import post_api
+
+app.register_blueprint(user_api)
+app.register_blueprint(post_api)
 
 env_path = Path("example.env").resolve()
 load_dotenv(dotenv_path=env_path)
@@ -11,11 +16,11 @@ try:
     import tracepointdebug
     tracepointdebug.start()
 except ImportError as e:
-    pass
+    print(e)
 
 @app.route('/')
-def hello_geek():
-    return '<h1>Hello from Flask & Docker</h2>'
+def welcome():
+    return '<h1>Hello World!</h1>'
 
 
 if __name__ == "__main__":
