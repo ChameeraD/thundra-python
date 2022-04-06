@@ -5,6 +5,6 @@ user_api = Blueprint('user_api', __name__)
 
 @user_api.route('/users')
 def get_users():
-    r =requests.get('https://jsonplaceholder.typicode.com/uses')
-    print(r)
+    url = 'https://jsonplaceholder.typicode.com/users'
+    r =requests.get(uri)
     return r.text
